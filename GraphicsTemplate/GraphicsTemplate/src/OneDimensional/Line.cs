@@ -1,36 +1,56 @@
-public class Line : OneDimensional {
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 
-	private Point point;
+public class Line : OneDimensional
+{
 
-	public Line(){
+    private Point point;
 
-	}
+    public Line()
+    {
+        point = new Point(0, 0);
+    }
 
-	~Line(){
+    public override void draw(Graphics graphics)
+    {
+        Pen pen = new Pen(this.getBorderColor());
+        graphics.DrawLine(pen, 
+            new Point(getCenter().X + getCenter().X - this.point.X,
+                        getCenter().Y + getCenter().Y - this.point.Y),
+            this.point);
+        pen.Dispose();
+    }
 
-	}
+    public Point GetSecondPoint()
+    {
+        return this.point;
+    }
 
-	public override void Dispose(){
+    public override List<Point> Location()
+    {
+        List<Point> locationPoints = new List<Point>();
+        locationPoints.Add(this.getCenter());
+        locationPoints.Add(this.point);
+        return locationPoints;
+    }
 
-	}
+    public override void move(Point destination)
+    {
+        if (destination != null)
+        {
+            this.setCenter(destination);
+        }
+    }
 
-	public abstract void draw();
-
-	public Point GetSecondPoint(){
-
-		return null;
-	}
-
-	public abstract vector<Point> location();
-
-	/// 
-	/// <param name="destination"></param>
-	public abstract void move(Point destination);
-
-	/// 
-	/// <param name="newVal"></param>
-	public void SetSecondPoint(Point newVal){
-
-	}
+    /// 
+    /// <param name="newVal"></param>
+    public void SetSecondPoint(Point newVal)
+    {
+        if (newVal != null)
+        {
+            this.point = newVal;
+        }
+    }
 
 }//end Line
