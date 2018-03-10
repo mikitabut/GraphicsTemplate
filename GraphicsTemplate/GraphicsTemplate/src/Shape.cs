@@ -1,48 +1,57 @@
-public abstract class Shape {
+using System.Collections.Generic;
+using System.Drawing;
 
-	private Color borderColor;
-	private Point center;
+public abstract class Shape
+{
 
-	public Shape(){
+    private Color borderColor;
+    private Point center;
 
-	}
+    public Shape()
+    {
+        borderColor = new Color();
+        center = new Point(0, 0);
+    }
 
-	~Shape(){
+    public abstract void draw();
 
-	}
+    public Color getBorderColor()
+    {
 
-	public virtual void Dispose(){
+        return borderColor;
+    }
 
-	}
+    public Point getCenter()
+    {
 
-	public abstract void draw();
+        return center;
+    }
 
-	public Color getBorderColor(){
+    public abstract List<Point> location();
 
-		return null;
-	}
+    /// 
+    /// <param name="destination"></param>
+    public abstract void move(Point destination);
 
-	public Point getCenter(){
+    /// 
+    /// <param name="newVal"></param>
+    public void setBorderColor(Color newVal)
+    {
+        if (newVal != null)
+        {
+            borderColor = newVal;
+        }
 
-		return null;
-	}
+    }
 
-	public abstract vector<Point> location();
-
-	/// 
-	/// <param name="destination"></param>
-	public abstract void move(Point destination);
-
-	/// 
-	/// <param name="newVal"></param>
-	public void setBorderColor(Color newVal){
-
-	}
-
-	/// 
-	/// <param name="newVal"></param>
-	public void setCenter(Point newVal){
-
-	}
+    /// 
+    /// <param name="newVal"></param>
+    public void setCenter(Point newVal)
+    {
+        if (newVal != null)
+        {
+            center = newVal;
+        }
+    }
 
 }//end Shape

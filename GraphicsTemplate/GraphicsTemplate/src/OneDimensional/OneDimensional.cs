@@ -1,15 +1,1 @@
-public abstract class OneDimensional : Shape {
-
-	public OneDimensional(){
-
-	}
-
-	~OneDimensional(){
-
-	}
-
-	public override void Dispose(){
-
-	}
-
-}//end OneDimensional
+public abstract class OneDimensional : Shape {}
