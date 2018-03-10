@@ -13,8 +13,6 @@ public abstract class Shape
         center = new Point(0, 0);
     }
 
-    public abstract void draw();
-
     public Color getBorderColor()
     {
 
@@ -23,11 +21,10 @@ public abstract class Shape
 
     public Point getCenter()
     {
-
         return center;
     }
 
-    public abstract List<Point> location();
+    public abstract List<Point> Location();
 
     /// 
     /// <param name="destination"></param>
@@ -43,6 +40,8 @@ public abstract class Shape
         }
 
     }
+
+    public abstract void draw(Graphics formGraphics);
 
     /// 
     /// <param name="newVal"></param>
