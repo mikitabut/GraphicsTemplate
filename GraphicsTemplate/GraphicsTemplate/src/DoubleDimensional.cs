@@ -9,7 +9,7 @@ public abstract class DoubleDimensional : Shape {
         fillColor = new Color();
 	}
 
-    protected Pen FillPen { get => fillPen; }
+    protected Pen FillPen { get { return fillPen; } }
 
     public Color getFillColor(){
 

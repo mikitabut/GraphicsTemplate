@@ -12,9 +12,13 @@ public class Ellipse : DoubleDimensional
         this.Point = new Point(0, 0);
     }
 
-    protected Point Point { get => point; set => point = value; }
+    protected Point Point
+    {
+        get { return point; }
+        set { point = value; }
+    }
 
-    public override void dragOnCreate(Point startPoint,Point secondPoint)
+    public override void dragOnCreate(Point startPoint, Point secondPoint)
     {
         this.Point = secondPoint;
         this.move(startPoint);

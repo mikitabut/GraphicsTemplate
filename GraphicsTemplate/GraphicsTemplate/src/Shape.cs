@@ -8,8 +8,13 @@ public abstract class Shape
     private Point center;
     private Pen borderPen;
 
-    protected Pen BorderPen { get => borderPen;}
-    protected Point Center { get => center; set => center = value; }
+    protected Pen BorderPen { get { return borderPen; } }
+    protected Point Center
+    {
+        get { return center; }
+        set { center = value; }
+    }
+
 
     public Shape()
     {
