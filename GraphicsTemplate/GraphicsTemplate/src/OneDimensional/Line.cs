@@ -1,39 +1,3 @@
-<<<<<<< Updated upstream
-public class Line : OneDimensional {
-
-	private Point point;
-
-	public Line(){
-
-	}
-
-	~Line(){
-
-	}
-
-	public override void Dispose(){
-
-	}
-
-	public abstract void draw();
-
-	public Point GetSecondPoint(){
-
-		return null;
-	}
-
-	public abstract vector<Point> location();
-
-	/// 
-	/// <param name="destination"></param>
-	public abstract void move(Point destination);
-
-	/// 
-	/// <param name="newVal"></param>
-	public void SetSecondPoint(Point newVal){
-
-	}
-=======
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -88,7 +52,6 @@ public class Line : OneDimensional
             this.point = newVal;
         }
     }
->>>>>>> Stashed changes
 
     public override void dragOnCreate(Point startPoint, Point secondPoint)
     {
