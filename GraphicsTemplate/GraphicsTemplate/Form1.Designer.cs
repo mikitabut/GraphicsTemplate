@@ -31,13 +31,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +77,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "One dimensional";
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(7, 77);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(218, 23);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "Draw line segment";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(7, 47);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(218, 23);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Draw ray";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(704, 124);
@@ -97,43 +119,44 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button8);
+            this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Location = new System.Drawing.Point(675, 220);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.Size = new System.Drawing.Size(231, 191);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Double Dimensional";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(19, 20);
+            this.button4.Location = new System.Drawing.Point(7, 20);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(175, 23);
+            this.button4.Size = new System.Drawing.Size(218, 23);
             this.button4.TabIndex = 0;
             this.button4.Text = "Ellipse";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // button7
             // 
-            this.button5.Location = new System.Drawing.Point(7, 47);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(218, 23);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Draw ray";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button7.Location = new System.Drawing.Point(7, 50);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(218, 23);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // button8
             // 
-            this.button6.Location = new System.Drawing.Point(7, 77);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(218, 23);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Draw line segment";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button8.Location = new System.Drawing.Point(7, 79);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(218, 23);
+            this.button8.TabIndex = 2;
+            this.button8.Text = "button8";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // Form1
             // 
@@ -166,6 +189,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
     }
 }
 

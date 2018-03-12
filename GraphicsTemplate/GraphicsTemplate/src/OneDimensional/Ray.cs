@@ -12,7 +12,6 @@ public class Ray : Line {
         graphics.DrawLine(this.BorderPen,
             tuple.Item1,
             tuple.Item2);
-        this.BorderPen.Dispose();
     }
 
     private Tuple<Point, Point> ResizeRay(PointF start, PointF end, int length)

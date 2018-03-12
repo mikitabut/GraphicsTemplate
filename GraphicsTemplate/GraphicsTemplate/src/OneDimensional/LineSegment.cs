@@ -9,7 +9,6 @@ public class LineSegment : Ray {
 
 	public override void draw(Graphics graphics) {
         graphics.DrawLine(this.BorderPen, this.getCenter(), this.GetSecondPoint());
-        this.BorderPen.Dispose();
     }
 
 }//end LineSegment

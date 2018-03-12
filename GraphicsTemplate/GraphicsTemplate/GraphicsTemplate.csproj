@@ -55,6 +55,7 @@
     <Compile Include="src\DoubleDimnesinal\Circle.cs" />
     <Compile Include="src\DoubleDimensional.cs" />
     <Compile Include="src\DoubleDimnesinal\Ellipse.cs" />
+    <Compile Include="src\DoubleDimnesinal\Poligon.cs" />
     <Compile Include="src\OneDimensional\Line.cs" />
     <Compile Include="src\OneDimensional\LineSegment.cs" />
     <Compile Include="src\OneDimensional.cs" />

@@ -18,7 +18,6 @@ public class Line : OneDimensional
         graphics.DrawLine(this.BorderPen, 
             tuple.Item1,
             tuple.Item2);
-        this.BorderPen.Dispose();
     }
 
     public Point GetSecondPoint()

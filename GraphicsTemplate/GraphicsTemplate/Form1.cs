@@ -17,7 +17,15 @@ namespace GraphicsTemplate
             Line,
             Ray,
             LineSegment,
-            Ellipse
+            Ellipse,
+            Circle,
+            Poligon,
+            RegularPoligon,
+            Parallelogram,
+            Rectangle,
+            Rhomb,
+            IsoscelesTriangle,
+            RightTriangle
         }
 
         private CurrentDrawing drawing = CurrentDrawing.Line;
@@ -59,7 +67,6 @@ namespace GraphicsTemplate
         private void button1_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Line;
-            //this.shape = createCurrentShape();
             this.createCurrentShape();
         }
 
@@ -88,8 +95,12 @@ namespace GraphicsTemplate
                     lineSegment.setBorderColor(this.currentBorderColor);
                     this.shape = lineSegment;
                     break;
+                case CurrentDrawing.Poligon:
+                    Shape poligon = new Poligon();
+                    poligon.setBorderColor(this.currentBorderColor);
+                    this.shape = poligon;
+                    break;
             }
-            //return null;
         }
 
         private void FalseAll()
@@ -179,5 +190,10 @@ namespace GraphicsTemplate
             this.createCurrentShape();
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            drawing = CurrentDrawing.Poligon;
+            this.createCurrentShape();
+        }
     }
 }
