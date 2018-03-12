@@ -14,17 +14,19 @@ namespace GraphicsTemplate
     {
         private enum CurrentDrawing
         {
-            line,
-            ellipse
+            Line,
+            Ray,
+            LineSegment,
+            Ellipse
         }
 
-        private CurrentDrawing drawing = CurrentDrawing.line;
+        private CurrentDrawing drawing = CurrentDrawing.Line;
         bool DrawingEnabled = false;
 
         Shape shape;
 
-        Color currentBorderColor =Color.Red;
-        Color currentFillColor =Color.Red;
+        Color currentBorderColor = Color.Red;
+        Color currentFillColor = Color.Red;
         Point linePoint1;
         List<Shape> shapes = new List<Shape>();
         Graphics formGraphics;
@@ -56,27 +58,38 @@ namespace GraphicsTemplate
 
         private void button1_Click(object sender, EventArgs e)
         {
-            drawing = CurrentDrawing.line;
-            this.shape = createCurrentShape();
+            drawing = CurrentDrawing.Line;
+            //this.shape = createCurrentShape();
+            this.createCurrentShape();
         }
 
-        private Shape createCurrentShape()
+        private void createCurrentShape()
         {
             switch (drawing)
             {
-                case CurrentDrawing.ellipse:
+                case CurrentDrawing.Ellipse:
                     Ellipse ellipse = new Ellipse();
                     ellipse.setFillColor(this.currentFillColor);
                     ellipse.setBorderColor(this.currentBorderColor);
-                    this.shape =  ellipse;
+                    this.shape = ellipse;
                     break;
-                case CurrentDrawing.line:
+                case CurrentDrawing.Line:
                     Shape line = new Line();
                     line.setBorderColor(this.currentBorderColor);
-                    this.shape =  line;
+                    this.shape = line;
+                    break;
+                case CurrentDrawing.Ray:
+                    Shape ray = new Ray();
+                    ray.setBorderColor(this.currentBorderColor);
+                    this.shape = ray;
+                    break;
+                case CurrentDrawing.LineSegment:
+                    Shape lineSegment = new LineSegment();
+                    lineSegment.setBorderColor(this.currentBorderColor);
+                    this.shape = lineSegment;
                     break;
             }
-            return null;
+            //return null;
         }
 
         private void FalseAll()
@@ -94,7 +107,7 @@ namespace GraphicsTemplate
                 return;
             }
 
-           this.createCurrentShape();
+            this.createCurrentShape();
             DrawingEnabled = true;
             linePoint1 = e.Location;
             this.shape.move(e.Location);
@@ -131,9 +144,9 @@ namespace GraphicsTemplate
         {
             if (this.colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                    this.currentBorderColor = this.colorDialog1.Color;
-                    this.createCurrentShape();
-                
+                this.currentBorderColor = this.colorDialog1.Color;
+                this.createCurrentShape();
+
             }
         }
 
@@ -141,17 +154,30 @@ namespace GraphicsTemplate
         {
             if (this.colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                
-                    this.currentFillColor = this.colorDialog1.Color;
-                    this.createCurrentShape();
-                
+
+                this.currentFillColor = this.colorDialog1.Color;
+                this.createCurrentShape();
+
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            drawing = CurrentDrawing.ellipse;
-            this.shape = createCurrentShape();
+            drawing = CurrentDrawing.Ellipse;
+            this.createCurrentShape();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            drawing = CurrentDrawing.Ray;
+            this.createCurrentShape();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            drawing = CurrentDrawing.LineSegment;
+            this.createCurrentShape();
+        }
+
     }
 }
