@@ -80,6 +80,12 @@ namespace GraphicsTemplate
                     ellipse.setBorderColor(this.currentBorderColor);
                     this.shape = ellipse;
                     break;
+                case CurrentDrawing.Circle:
+                    Circle circle = new Circle();
+                    circle.setFillColor(this.currentFillColor);
+                    circle.setBorderColor(this.currentBorderColor);
+                    this.shape = circle;
+                    break;
                 case CurrentDrawing.Line:
                     Shape line = new Line();
                     line.setBorderColor(this.currentBorderColor);
@@ -95,11 +101,11 @@ namespace GraphicsTemplate
                     lineSegment.setBorderColor(this.currentBorderColor);
                     this.shape = lineSegment;
                     break;
-                case CurrentDrawing.Poligon:
-                    Shape poligon = new Poligon();
-                    poligon.setBorderColor(this.currentBorderColor);
-                    this.shape = poligon;
-                    break;
+                //case CurrentDrawing.Poligon:
+                //    Shape poligon = new Poligon();
+                //    poligon.setBorderColor(this.currentBorderColor);
+                //    this.shape = poligon;
+                //    break;
             }
         }
 
@@ -193,6 +199,12 @@ namespace GraphicsTemplate
         private void button8_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Poligon;
+            this.createCurrentShape();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            drawing = CurrentDrawing.Circle;
             this.createCurrentShape();
         }
     }

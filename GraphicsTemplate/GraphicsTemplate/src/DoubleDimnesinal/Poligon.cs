@@ -1,41 +1,41 @@
-using System.Drawing;
-using System.Collections.Generic;
-public class Poligon : DoubleDimensional {
+//using System.Drawing;
+//using System.Collections.Generic;
+//public class Poligon : DoubleDimensional {
 
-	private List<Point> vertexes;
+//	private List<Point> vertexes;
 
-	public Poligon(){
+//	public Poligon(){
 
-	}
+//	}
 
-	~Poligon(){
+//	~Poligon(){
 
-	}
+//	}
 
-	public override void Dispose(){
+//	public override void Dispose(){
 
-	}
+//	}
 
-	public abstract override void draw();
+//	public abstract override void draw();
 
-	public List<Point> getVertexes(){
+//	public List<Point> getVertexes(){
 
-		return null;
-	}
+//		return null;
+//	}
 
-	public override List<Point> location(){
+//	public override List<Point> location(){
 
-		return null;
-	}
+//		return null;
+//	}
 
-	/// 
-	/// <param name="destination"></param>
-	public abstract override void move(Point destination);
+//	/// 
+//	/// <param name="destination"></param>
+//	public abstract override void move(Point destination);
 
-	/// 
-	/// <param name="newVal"></param>
-	public void setVertexes(List<Point> newVal){
+//	/// 
+//	/// <param name="newVal"></param>
+//	public void setVertexes(List<Point> newVal){
 
-	}
+//	}
 
-}//end Poligon
+//}//end Poligon
