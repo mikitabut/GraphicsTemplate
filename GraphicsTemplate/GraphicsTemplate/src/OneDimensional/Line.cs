@@ -14,12 +14,11 @@ public class Line : OneDimensional
 
     public override void draw(Graphics graphics)
     {
-        Pen pen = new Pen(this.getBorderColor());
         Tuple<Point, Point> tuple = this.ResizeLine(this.getCenter(), this.point, 100000);
-        graphics.DrawLine(pen, 
+        graphics.DrawLine(this.BorderPen, 
             tuple.Item1,
             tuple.Item2);
-        pen.Dispose();
+        this.BorderPen.Dispose();
     }
 
     public Point GetSecondPoint()
@@ -61,13 +60,9 @@ public class Line : OneDimensional
 
     private Tuple<Point, Point> ResizeLine(PointF start, PointF end, int length)
     {
-        //Считаем вектор
         var v = new PointF(end.X - start.X, end.Y - start.Y);
-        //Длина вектора
         var l = (float)Math.Sqrt(v.X * v.X + v.Y * v.Y);
-        //Нормирование
         v = new PointF(v.X / l, v.Y / l);
-        //Новые координаты отрезка
         var newStart = new Point((int)(start.X - v.X * length), (int)(start.Y - v.Y * length));
         var newEnd = new Point((int)(end.X + v.X * length), (int)(end.Y + v.Y * length));
         return new Tuple<Point, Point>(newStart, newEnd);
