@@ -123,6 +123,12 @@ namespace GraphicsTemplate
                     rightTriangle.setBorderColor(this.currentBorderColor);
                     this.shape = rightTriangle;
                     break;
+                case CurrentDrawing.IsoscelesTriangle:
+                    IsoscelesTriangle isoscelesTriangle = new IsoscelesTriangle();
+                    isoscelesTriangle.setFillColor(this.currentFillColor);
+                    isoscelesTriangle.setBorderColor(this.currentBorderColor);
+                    this.shape = isoscelesTriangle;
+                    break;
             }
         }
 
@@ -286,6 +292,13 @@ namespace GraphicsTemplate
         private void button11_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.RightTriangle;
+            drawingByPoints = false;
+            this.createCurrentShape();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            drawing = CurrentDrawing.IsoscelesTriangle;
             drawingByPoints = false;
             this.createCurrentShape();
         }
