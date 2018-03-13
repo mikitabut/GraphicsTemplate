@@ -117,6 +117,12 @@ namespace GraphicsTemplate
                     regularPoligon.setBorderColor(this.currentBorderColor);
                     this.shape = regularPoligon;
                     break;
+                case CurrentDrawing.RightTriangle:
+                    RightTriangle rightTriangle = new RightTriangle();
+                    rightTriangle.setFillColor(this.currentFillColor);
+                    rightTriangle.setBorderColor(this.currentBorderColor);
+                    this.shape = rightTriangle;
+                    break;
             }
         }
 
@@ -273,6 +279,13 @@ namespace GraphicsTemplate
         private void button10_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.RegularPolygon;
+            drawingByPoints = false;
+            this.createCurrentShape();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            drawing = CurrentDrawing.RightTriangle;
             drawingByPoints = false;
             this.createCurrentShape();
         }

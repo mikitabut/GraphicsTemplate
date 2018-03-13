@@ -34,8 +34,7 @@ public class RegularPolygon : Poligon
             this.getVertexes().Add(DegreesToXY(angle, radius, this.getCenter())); //code snippet from above
             angle += step;
         }
-        formGraphics.FillPolygon(this.FillPen.Brush, this.getVertexes().ToArray());
-        formGraphics.DrawPolygon(this.BorderPen, this.getVertexes().ToArray());
+        base.draw(formGraphics);
     }
 
     private Point DegreesToXY(float degrees, float radius, Point origin)

@@ -45,6 +45,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -141,19 +142,20 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(308, 235);
+            this.groupBox2.Size = new System.Drawing.Size(308, 368);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Double Dimensional";
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button11);
             this.groupBox3.Controls.Add(this.button10);
             this.groupBox3.Controls.Add(this.button8);
             this.groupBox3.Controls.Add(this.numericUpDown1);
             this.groupBox3.Location = new System.Drawing.Point(9, 100);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(291, 128);
+            this.groupBox3.Size = new System.Drawing.Size(292, 261);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Polygon shapes";
@@ -235,9 +237,19 @@
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(185, 29);
             this.button10.TabIndex = 4;
-            this.button10.Text = "button10";
+            this.button10.Text = "Regular Polygon";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(7, 90);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(185, 29);
+            this.button11.TabIndex = 4;
+            this.button11.Text = "Right Triangle";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // Form1
             // 
@@ -282,6 +294,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }
 
