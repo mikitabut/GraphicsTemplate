@@ -29,13 +29,16 @@ namespace GraphicsTemplate
         }
 
         private CurrentDrawing drawing = CurrentDrawing.Line;
-        bool DrawingEnabled = false;
+        bool drawingEnabled = false;
+        bool drawingByPoints = false;
 
         Shape shape;
 
         Color currentBorderColor = Color.Red;
         Color currentFillColor = Color.Red;
-        Point linePoint1;
+        Point firstPoint;
+        decimal poligonVertexNumber = 0;
+        decimal tapsNumber = 0;
         List<Shape> shapes = new List<Shape>();
         Graphics formGraphics;
         private Shape selectedItem;
@@ -69,7 +72,7 @@ namespace GraphicsTemplate
         private void button1_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Line;
-            this.createCurrentShape();
+            drawingByPoints = false;
         }
 
         private void createCurrentShape()
@@ -103,17 +106,18 @@ namespace GraphicsTemplate
                     lineSegment.setBorderColor(this.currentBorderColor);
                     this.shape = lineSegment;
                     break;
-                //case CurrentDrawing.Poligon:
-                //    Shape poligon = new Poligon();
-                //    poligon.setBorderColor(this.currentBorderColor);
-                //    this.shape = poligon;
-                //    break;
+                case CurrentDrawing.Poligon:
+                    Poligon poligon = new Poligon(poligonVertexNumber);
+                    poligon.setFillColor(this.currentFillColor);
+                    poligon.setBorderColor(this.currentBorderColor);
+                    this.shape = poligon;
+                    break;
             }
         }
 
         private void FalseAll()
         {
-            DrawingEnabled = false;
+            drawingEnabled = false;
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -125,19 +129,27 @@ namespace GraphicsTemplate
                 this.Reload();
                 return;
             }
-
-            this.createCurrentShape();
-            DrawingEnabled = true;
-            linePoint1 = e.Location;
-            this.shape.move(e.Location);
-
+            drawingEnabled = true;
+            if (!this.drawingByPoints)
+            {
+                this.createCurrentShape();
+                firstPoint = e.Location;
+                this.shape.move(e.Location);
+            }
+            else
+            {
+                if(this.tapsNumber == 0)
+                    this.createCurrentShape();
+                this.shape.tapOnCreate(e.Location);
+                this.tapsNumber++;
+            }
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (DrawingEnabled)
+            if (drawingEnabled && !drawingByPoints)
             {
-                this.shape.dragOnCreate(linePoint1, e.Location);
+                this.shape.dragOnCreate(firstPoint, e.Location);
                 this.formGraphics.Clear(Color.White);
                 this.Reload();
                 this.shape.draw(this.formGraphics);
@@ -146,12 +158,24 @@ namespace GraphicsTemplate
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (DrawingEnabled)
+            if (drawingEnabled)
             {
-                this.shapes.Add(this.shape);
+                if (!drawingByPoints)
+                {
+                    this.shapes.Add(this.shape);
                 this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
                 this.shape = null;
-                this.DrawingEnabled = false;
+                this.drawingEnabled = false;
+                }
+                else if (tapsNumber == poligonVertexNumber)
+                {
+                    this.shapes.Add(this.shape);
+                    this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
+                    this.shape.draw(this.formGraphics);
+                    this.tapsNumber = 0;
+                    this.shape = null;
+                    this.drawingEnabled = false;
+                }
             }
         }
 
@@ -165,8 +189,6 @@ namespace GraphicsTemplate
             if (this.colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 this.currentBorderColor = this.colorDialog1.Color;
-                this.createCurrentShape();
-
             }
         }
 
@@ -174,35 +196,33 @@ namespace GraphicsTemplate
         {
             if (this.colorDialog1.ShowDialog() == DialogResult.OK)
             {
-
                 this.currentFillColor = this.colorDialog1.Color;
-                this.createCurrentShape();
-
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Ellipse;
-            this.createCurrentShape();
+            drawingByPoints = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Ray;
-            this.createCurrentShape();
+            drawingByPoints = false;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.LineSegment;
-            this.createCurrentShape();
+            drawingByPoints = false;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Poligon;
-            this.createCurrentShape();
+            poligonVertexNumber = numericUpDown1.Value;
+            drawingByPoints = true;
         }
 
         private void button7_Click(object sender, EventArgs e)

@@ -25,6 +25,8 @@ public abstract class Shape
 
     public abstract void dragOnCreate(Point startPoint, Point secondPoint);
 
+    public virtual void tapOnCreate(Point vertex) { }
+
     public Color getBorderColor()
     {
         return borderColor;
