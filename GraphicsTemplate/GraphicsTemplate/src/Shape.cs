@@ -15,7 +15,6 @@ public abstract class Shape
         set { center = value; }
     }
 
-
     public Shape()
     {
         borderColor = Color.Red;
@@ -56,6 +55,7 @@ public abstract class Shape
             }
             borderColor = newVal;
             borderPen = new Pen(borderColor);
+            borderPen.Width = 3;
         }
 
     }

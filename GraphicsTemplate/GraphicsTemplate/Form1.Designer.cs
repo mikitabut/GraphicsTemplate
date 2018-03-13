@@ -37,17 +37,18 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button7 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button9 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -145,9 +146,32 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Double Dimensional";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.button10);
+            this.groupBox3.Controls.Add(this.button8);
+            this.groupBox3.Controls.Add(this.numericUpDown1);
+            this.groupBox3.Location = new System.Drawing.Point(9, 100);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(291, 128);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Polygon shapes";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(7, 22);
+            this.button8.Margin = new System.Windows.Forms.Padding(4);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(185, 25);
+            this.button8.TabIndex = 2;
+            this.button8.Text = "Polygon";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(207, 24);
+            this.numericUpDown1.Location = new System.Drawing.Point(205, 55);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             3,
             0,
@@ -161,17 +185,7 @@
             0,
             0,
             0});
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(7, 22);
-            this.button8.Margin = new System.Windows.Forms.Padding(4);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(185, 25);
-            this.button8.TabIndex = 2;
-            this.button8.Text = "Polygon";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // button7
             // 
@@ -215,16 +229,15 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // groupBox3
+            // button10
             // 
-            this.groupBox3.Controls.Add(this.button8);
-            this.groupBox3.Controls.Add(this.numericUpDown1);
-            this.groupBox3.Location = new System.Drawing.Point(9, 100);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(291, 128);
-            this.groupBox3.TabIndex = 4;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Polygon shapes";
+            this.button10.Location = new System.Drawing.Point(7, 55);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(185, 29);
+            this.button10.TabIndex = 4;
+            this.button10.Text = "button10";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // Form1
             // 
@@ -245,8 +258,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -268,6 +281,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button10;
     }
 }
 

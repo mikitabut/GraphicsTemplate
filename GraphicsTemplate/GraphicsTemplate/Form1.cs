@@ -20,7 +20,7 @@ namespace GraphicsTemplate
             Ellipse,
             Circle,
             Poligon,
-            RegularPoligon,
+            RegularPolygon,
             Parallelogram,
             Rectangle,
             Rhomb,
@@ -37,7 +37,6 @@ namespace GraphicsTemplate
         Color currentBorderColor = Color.Red;
         Color currentFillColor = Color.Red;
         Point firstPoint;
-        decimal poligonVertexNumber = 0;
         decimal tapsNumber = 0;
         List<Shape> shapes = new List<Shape>();
         Graphics formGraphics;
@@ -107,10 +106,16 @@ namespace GraphicsTemplate
                     this.shape = lineSegment;
                     break;
                 case CurrentDrawing.Poligon:
-                    Poligon poligon = new Poligon(poligonVertexNumber);
+                    Poligon poligon = new Poligon();
                     poligon.setFillColor(this.currentFillColor);
                     poligon.setBorderColor(this.currentBorderColor);
                     this.shape = poligon;
+                    break;
+                case CurrentDrawing.RegularPolygon:
+                    RegularPolygon regularPoligon = new RegularPolygon((int)this.numericUpDown1.Value);
+                    regularPoligon.setFillColor(this.currentFillColor);
+                    regularPoligon.setBorderColor(this.currentBorderColor);
+                    this.shape = regularPoligon;
                     break;
             }
         }
@@ -124,6 +129,15 @@ namespace GraphicsTemplate
         {
             if (e.Button == MouseButtons.Right)
             {
+                if (tapsNumber >= 3)
+                {
+                    this.shapes.Add(this.shape);
+                    this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
+                    this.shape.draw(this.formGraphics);
+                    this.tapsNumber = 0;
+                    this.shape = null;
+                    this.drawingEnabled = false;
+                }
                 this.FalseAll();
                 this.formGraphics.Clear(Color.White);
                 this.Reload();
@@ -166,15 +180,6 @@ namespace GraphicsTemplate
                 this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
                 this.shape = null;
                 this.drawingEnabled = false;
-                }
-                else if (tapsNumber == poligonVertexNumber)
-                {
-                    this.shapes.Add(this.shape);
-                    this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
-                    this.shape.draw(this.formGraphics);
-                    this.tapsNumber = 0;
-                    this.shape = null;
-                    this.drawingEnabled = false;
                 }
             }
         }
@@ -221,7 +226,6 @@ namespace GraphicsTemplate
         private void button8_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Poligon;
-            poligonVertexNumber = numericUpDown1.Value;
             drawingByPoints = true;
         }
 
@@ -229,6 +233,7 @@ namespace GraphicsTemplate
         {
             drawing = CurrentDrawing.Circle;
             this.createCurrentShape();
+            drawingByPoints = false;
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -258,6 +263,18 @@ namespace GraphicsTemplate
                 this.formGraphics.Clear(Color.White);
                 this.Reload();
             }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            drawing = CurrentDrawing.RegularPolygon;
+            drawingByPoints = false;
+            this.createCurrentShape();
         }
     }
 }
