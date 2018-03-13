@@ -38,6 +38,8 @@ namespace GraphicsTemplate
         Point linePoint1;
         List<Shape> shapes = new List<Shape>();
         Graphics formGraphics;
+        private Shape selectedItem;
+        private Color lastSelectedItemColor;
 
         public Form1()
         {
@@ -147,6 +149,7 @@ namespace GraphicsTemplate
             if (DrawingEnabled)
             {
                 this.shapes.Add(this.shape);
+                this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
                 this.shape = null;
                 this.DrawingEnabled = false;
             }
@@ -206,6 +209,35 @@ namespace GraphicsTemplate
         {
             drawing = CurrentDrawing.Circle;
             this.createCurrentShape();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if(this.listBox1.SelectedIndex!=-1)
+            {
+                this.shapes.RemoveAt(this.listBox1.SelectedIndex);
+                this.listBox1.Items.Remove(this.listBox1.SelectedItem);
+                this.selectedItem = null;
+                this.lastSelectedItemColor = Color.AliceBlue;
+                this.formGraphics.Clear(Color.White);
+                this.Reload();
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.listBox1.SelectedIndex!=-1)
+            {
+                if (this.selectedItem != null)
+                {
+                    this.selectedItem.setBorderColor(this.lastSelectedItemColor);
+                }
+                selectedItem = this.shapes.ElementAt(this.listBox1.SelectedIndex);
+                this.lastSelectedItemColor = selectedItem.getBorderColor();
+                selectedItem.setBorderColor(Color.Aqua);
+                this.formGraphics.Clear(Color.White);
+                this.Reload();
+            }
         }
     }
 }
