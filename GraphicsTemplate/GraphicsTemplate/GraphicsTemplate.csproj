@@ -55,7 +55,10 @@
     <Compile Include="src\DoubleDimnesinal\Circle.cs" />
     <Compile Include="src\DoubleDimensional.cs" />
     <Compile Include="src\DoubleDimnesinal\Ellipse.cs" />
+    <Compile Include="src\DoubleDimnesinal\Parallelogram.cs" />
     <Compile Include="src\DoubleDimnesinal\Poligon.cs" />
+    <Compile Include="src\DoubleDimnesinal\Rectangle.cs" />
+    <Compile Include="src\DoubleDimnesinal\Rhomb.cs" />
     <Compile Include="src\OneDimensional\Line.cs" />
     <Compile Include="src\OneDimensional\LineSegment.cs" />
     <Compile Include="src\OneDimensional.cs" />

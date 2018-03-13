@@ -4,11 +4,20 @@ public class Poligon : DoubleDimensional
 {
 
     private List<Point> vertexes;
-    private decimal vertexNumber;
+    protected decimal vertexNumber;
 
+    /*protected decimal vertexNumber
+    {
+        get { return this.vertexNumber; }
+        set { this.vertexNumber = value; }
+    }*/
     public Poligon(decimal n)
     {
         vertexNumber = n;
+        vertexes = new List<Point>();
+    }
+    public Poligon()
+    {
         vertexes = new List<Point>();
     }
 
@@ -21,7 +30,7 @@ public class Poligon : DoubleDimensional
 
     public override void tapOnCreate(Point vertex)
     {
-        if (vertexes.Count < vertexNumber)
+        if (vertexes.Count <= vertexNumber)
         {
             if (this.vertexes.Count == 0)
             {
