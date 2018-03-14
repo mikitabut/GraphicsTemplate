@@ -242,7 +242,9 @@ namespace GraphicsTemplate
             else if(moving)
             {
                 this.formGraphics.Clear(Color.White);
+                this.shape = null;
                 this.Reload();
+                this.drawingEnabled = false;
             }
         }
 
