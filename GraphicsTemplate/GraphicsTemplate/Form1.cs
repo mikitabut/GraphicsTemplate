@@ -31,6 +31,7 @@ namespace GraphicsTemplate
         private CurrentDrawing drawing = CurrentDrawing.Line;
         bool drawingEnabled = false;
         bool drawingByPoints = false;
+        bool moving = false;
 
         Shape shape;
 
@@ -72,6 +73,7 @@ namespace GraphicsTemplate
         {
             drawing = CurrentDrawing.Line;
             drawingByPoints = false;
+            this.moving = false;
         }
 
         private void createCurrentShape()
@@ -174,37 +176,49 @@ namespace GraphicsTemplate
                 return;
             }
             drawingEnabled = true;
-            if (!this.drawingByPoints)
+            if (moving)
             {
-                this.createCurrentShape();
+                this.shape = this.selectedItem;
                 firstPoint = e.Location;
                 this.shape.move(e.Location);
             }
             else
             {
-                if (this.tapsNumber == 0)
-                    this.createCurrentShape();
-                bool canRedraw = this.shape.tapOnCreate(e.Location);
-                if (canRedraw)
+                if (!this.drawingByPoints)
                 {
-                    this.shapes.Add(this.shape);
-                    this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
-                    this.shape = null;
-                    this.drawingEnabled = false;
-                    this.formGraphics.Clear(Color.White);
-                    this.Reload();
-                    this.tapsNumber = 0;
+
+                    this.createCurrentShape();
+                    firstPoint = e.Location;
+                    this.shape.move(e.Location);
+
+
                 }
                 else
                 {
-                    this.tapsNumber++;
+                    if (this.tapsNumber == 0)
+                        this.createCurrentShape();
+                    bool canRedraw = this.shape.tapOnCreate(e.Location);
+                    if (canRedraw)
+                    {
+                        this.shapes.Add(this.shape);
+                        this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
+                        this.shape = null;
+                        this.drawingEnabled = false;
+                        this.formGraphics.Clear(Color.White);
+                        this.Reload();
+                        this.tapsNumber = 0;
+                    }
+                    else
+                    {
+                        this.tapsNumber++;
+                    }
                 }
             }
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (drawingEnabled && !drawingByPoints)
+            if (drawingEnabled && !drawingByPoints && !moving)
             {
                 this.shape.dragOnCreate(firstPoint, e.Location);
                 this.formGraphics.Clear(Color.White);
@@ -215,15 +229,18 @@ namespace GraphicsTemplate
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (drawingEnabled)
+            if (drawingEnabled && !moving)
             {
                 if (!drawingByPoints)
                 {
-                    this.shapes.Add(this.shape);
-                    this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
                     this.shape = null;
                     this.drawingEnabled = false;
                 }
+            }
+            else
+            {
+                this.formGraphics.Clear(Color.White);
+                this.Reload();
             }
         }
 
@@ -252,24 +269,28 @@ namespace GraphicsTemplate
         {
             drawing = CurrentDrawing.Ellipse;
             drawingByPoints = false;
+            this.moving = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Ray;
             drawingByPoints = false;
+            this.moving = false;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.LineSegment;
             drawingByPoints = false;
+            this.moving = false;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Poligon;
             drawingByPoints = true;
+            this.moving = false;
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -277,6 +298,7 @@ namespace GraphicsTemplate
             drawing = CurrentDrawing.Circle;
             this.createCurrentShape();
             drawingByPoints = false;
+            this.moving = false;
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -288,6 +310,7 @@ namespace GraphicsTemplate
                 this.selectedItem = null;
                 this.lastSelectedItemColor = Color.AliceBlue;
                 this.formGraphics.Clear(Color.White);
+                this.moving = false;
                 this.Reload();
             }
         }
@@ -301,6 +324,8 @@ namespace GraphicsTemplate
                     this.selectedItem.setBorderColor(this.lastSelectedItemColor);
                 }
                 selectedItem = this.shapes.ElementAt(this.listBox1.SelectedIndex);
+                this.moving = true;
+                this.shape = selectedItem;
                 this.lastSelectedItemColor = selectedItem.getBorderColor();
                 selectedItem.setBorderColor(Color.Aqua);
                 this.formGraphics.Clear(Color.White);
@@ -317,6 +342,7 @@ namespace GraphicsTemplate
         {
             drawing = CurrentDrawing.RegularPolygon;
             drawingByPoints = false;
+            this.moving = false;
             this.createCurrentShape();
         }
         // private void button10_Click(object sender, EventArgs e)
@@ -329,6 +355,7 @@ namespace GraphicsTemplate
         {
             drawing = CurrentDrawing.RightTriangle;
             drawingByPoints = false;
+            this.moving = false;
             this.createCurrentShape();
         }
         // private void button11_Click(object sender, EventArgs e)
@@ -341,6 +368,7 @@ namespace GraphicsTemplate
         {
             drawing = CurrentDrawing.IsoscelesTriangle;
             drawingByPoints = false;
+            this.moving = false;
             this.createCurrentShape();
         }
 
@@ -348,18 +376,21 @@ namespace GraphicsTemplate
         {
             drawing = CurrentDrawing.Rectangle;
             drawingByPoints = true;
+            this.moving = false;
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Rhomb;
             drawingByPoints = true;
+            this.moving = false;
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
             drawing = CurrentDrawing.Parallelogram;
             drawingByPoints = true;
+            this.moving = false;
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -367,6 +398,7 @@ namespace GraphicsTemplate
             this.shapes.Clear();
             this.listBox1.Items.Clear();
             this.formGraphics.Clear(Color.White);
+            this.moving = false;
             this.Reload();
         }
         // private void button12_Click(object sender, EventArgs e)

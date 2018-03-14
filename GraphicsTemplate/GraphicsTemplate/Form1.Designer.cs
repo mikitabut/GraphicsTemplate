@@ -147,7 +147,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.groupBox2.Size = new System.Drawing.Size(411, 453);
+            this.groupBox2.Size = new System.Drawing.Size(411, 473);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Double Dimensional";
@@ -166,7 +166,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox3.Size = new System.Drawing.Size(389, 321);
+            this.groupBox3.Size = new System.Drawing.Size(389, 341);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Polygon shapes";
@@ -178,7 +178,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(247, 36);
             this.button12.TabIndex = 4;
-            this.button12.Text = "Right Triangle";
+            this.button12.Text = "Isosceles triangle";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
@@ -318,7 +318,7 @@
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(101, 31);
             this.button16.TabIndex = 6;
-            this.button16.Text = "Delete";
+            this.button16.Text = "Clear";
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
