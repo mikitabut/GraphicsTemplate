@@ -25,8 +25,8 @@ public class Poligon : DoubleDimensional
 
     public override void move(Point destination)
     {
-        int deltaX = this.Center.X - destination.X;
-        int deltaY = this.Center.Y - destination.Y;
+        int deltaX = destination.X - this.Center.X;
+        int deltaY = destination.Y - this.Center.Y;
         base.move(destination);
         List<Point> newVertexes = new List<Point>();
         foreach (Point vertex in this.vertexes)

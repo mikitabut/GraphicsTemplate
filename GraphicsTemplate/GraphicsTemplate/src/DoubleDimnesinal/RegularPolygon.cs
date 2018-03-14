@@ -71,10 +71,6 @@ public class RegularPolygon : Poligon
     }
 
     /// 
-    /// <param name="destination"></param>
-    public override void move(Point destination) { }
-
-    /// 
     /// <param name="newVal"></param>
     public void setCount(int newVal)
     {
