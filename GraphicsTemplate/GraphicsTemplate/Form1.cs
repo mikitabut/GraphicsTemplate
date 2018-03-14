@@ -233,11 +233,13 @@ namespace GraphicsTemplate
             {
                 if (!drawingByPoints)
                 {
+                    this.shapes.Add(this.shape);
+                    this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
                     this.shape = null;
                     this.drawingEnabled = false;
                 }
             }
-            else
+            else if(moving)
             {
                 this.formGraphics.Clear(Color.White);
                 this.Reload();

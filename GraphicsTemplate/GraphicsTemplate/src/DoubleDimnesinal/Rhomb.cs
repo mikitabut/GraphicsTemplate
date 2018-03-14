@@ -27,13 +27,4 @@ public class Rhomb : Parallelogram {
         }
     }
 
-	public override List<Point> Location(){
-
-		return null;
-	}
-
-	/// 
-	/// <param name="destination"></param>
-	public override void move(Point destination) { }
-
 }//end Rhomb

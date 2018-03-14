@@ -27,6 +27,8 @@ public class Rectangle : Parallelogram {
 
     public override bool tapOnCreate(Point vertex)
     {
+        if (this.getVertexes().Count == 0)
+            this.Center = vertex;
         return base.tapOnCreate(vertex) || this.getVertexes().Count==2;
     }
 
@@ -34,9 +36,4 @@ public class Rectangle : Parallelogram {
 
 		return this.getVertexes();
 	}
-
-	/// 
-	/// <param name="destination"></param>
-	public override void move(Point destination) { }
-
 }//end Rectangle
