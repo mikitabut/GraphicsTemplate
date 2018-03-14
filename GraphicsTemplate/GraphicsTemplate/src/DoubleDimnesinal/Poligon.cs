@@ -12,13 +12,14 @@ public class Poligon : DoubleDimensional
 
     public override void dragOnCreate(Point startPoint, Point secondPoint) { }
 
-    public override void tapOnCreate(Point vertex)
+    public override bool tapOnCreate(Point vertex)
     {
         if (this.vertexes.Count == 0)
         {
             this.setCenter(vertex);
         }
         vertexes.Add(vertex);
+        return false;
         
     }
 

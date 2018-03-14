@@ -129,6 +129,24 @@ namespace GraphicsTemplate
                     isoscelesTriangle.setBorderColor(this.currentBorderColor);
                     this.shape = isoscelesTriangle;
                     break;
+                case CurrentDrawing.Parallelogram:
+                    Parallelogram parallelogram = new Parallelogram();
+                    parallelogram.setFillColor(this.currentFillColor);
+                    parallelogram.setBorderColor(this.currentBorderColor);
+                    this.shape = parallelogram;
+                    break;
+                case CurrentDrawing.Rectangle:
+                    Rectangle rectangle = new Rectangle();
+                    rectangle.setFillColor(this.currentFillColor);
+                    rectangle.setBorderColor(this.currentBorderColor);
+                    this.shape = rectangle;
+                    break;
+                case CurrentDrawing.Rhomb:
+                    Rhomb rhomb = new Rhomb();
+                    rhomb.setFillColor(this.currentFillColor);
+                    rhomb.setBorderColor(this.currentBorderColor);
+                    this.shape = rhomb;
+                    break;
             }
         }
 
@@ -164,10 +182,23 @@ namespace GraphicsTemplate
             }
             else
             {
-                if(this.tapsNumber == 0)
+                if (this.tapsNumber == 0)
                     this.createCurrentShape();
-                this.shape.tapOnCreate(e.Location);
-                this.tapsNumber++;
+                bool canRedraw = this.shape.tapOnCreate(e.Location);
+                if (canRedraw)
+                {
+                    this.shapes.Add(this.shape);
+                    this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
+                    this.shape = null;
+                    this.drawingEnabled = false;
+                    this.formGraphics.Clear(Color.White);
+                    this.Reload();
+                    this.tapsNumber = 0;
+                }
+                else
+                {
+                    this.tapsNumber++;
+                }
             }
         }
 
@@ -189,9 +220,9 @@ namespace GraphicsTemplate
                 if (!drawingByPoints)
                 {
                     this.shapes.Add(this.shape);
-                this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
-                this.shape = null;
-                this.drawingEnabled = false;
+                    this.listBox1.Items.Add("(" + this.shapes.Count + ")" + this.shape.GetType().ToString() + "(" + this.shape.getCenter().X + "," + this.shape.getCenter().Y + ")");
+                    this.shape = null;
+                    this.drawingEnabled = false;
                 }
             }
         }
@@ -250,7 +281,7 @@ namespace GraphicsTemplate
 
         private void button9_Click(object sender, EventArgs e)
         {
-            if(this.listBox1.SelectedIndex!=-1)
+            if (this.listBox1.SelectedIndex != -1)
             {
                 this.shapes.RemoveAt(this.listBox1.SelectedIndex);
                 this.listBox1.Items.Remove(this.listBox1.SelectedItem);
@@ -263,7 +294,7 @@ namespace GraphicsTemplate
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.listBox1.SelectedIndex!=-1)
+            if (this.listBox1.SelectedIndex != -1)
             {
                 if (this.selectedItem != null)
                 {
@@ -288,6 +319,11 @@ namespace GraphicsTemplate
             drawingByPoints = false;
             this.createCurrentShape();
         }
+        // private void button10_Click(object sender, EventArgs e)
+        // {
+        //     drawing = CurrentDrawing.Parallelogram;
+        //     drawingByPoints = true;
+        // }
 
         private void button11_Click(object sender, EventArgs e)
         {
@@ -295,6 +331,11 @@ namespace GraphicsTemplate
             drawingByPoints = false;
             this.createCurrentShape();
         }
+        // private void button11_Click(object sender, EventArgs e)
+        // {
+        //     drawing = CurrentDrawing.Rectangle;
+        //     drawingByPoints = true;
+        // }
 
         private void button12_Click(object sender, EventArgs e)
         {
@@ -302,5 +343,36 @@ namespace GraphicsTemplate
             drawingByPoints = false;
             this.createCurrentShape();
         }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            drawing = CurrentDrawing.Rectangle;
+            drawingByPoints = true;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            drawing = CurrentDrawing.Rhomb;
+            drawingByPoints = true;
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            drawing = CurrentDrawing.Parallelogram;
+            drawingByPoints = true;
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            this.shapes.Clear();
+            this.listBox1.Items.Clear();
+            this.formGraphics.Clear(Color.White);
+            this.Reload();
+        }
+        // private void button12_Click(object sender, EventArgs e)
+        // {
+        //     drawing = CurrentDrawing.Rhomb;
+        //     drawingByPoints = true;
+        // }
     }
 }

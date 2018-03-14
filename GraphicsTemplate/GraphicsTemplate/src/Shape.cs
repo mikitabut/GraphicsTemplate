@@ -24,7 +24,7 @@ public abstract class Shape
 
     public abstract void dragOnCreate(Point startPoint, Point secondPoint);
 
-    public virtual void tapOnCreate(Point vertex) { }
+    public virtual bool tapOnCreate(Point vertex) { return false; }
 
     public Color getBorderColor()
     {
