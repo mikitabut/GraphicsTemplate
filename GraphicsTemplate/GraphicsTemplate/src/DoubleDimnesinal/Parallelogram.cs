@@ -6,7 +6,7 @@ public class Parallelogram : Poligon
     public override void draw(Graphics graphics)
     {
         Point[] vertexes = this.getVertexes().ToArray();
-        if (vertexes.Length >= 3)
+        if (vertexes.Length == 3)
         {
             int deltaX = 0, deltaY = 0;
             Point theFourth = new Point();
@@ -15,9 +15,9 @@ public class Parallelogram : Poligon
             theFourth.X = vertexes[2].X + deltaX;
             theFourth.Y = vertexes[2].Y + deltaY;
             this.tapOnCreate(theFourth);
-            graphics.DrawPolygon(this.BorderPen, this.getVertexes().ToArray());
-            graphics.FillPolygon(this.FillPen.Brush, this.getVertexes().ToArray());
         }
+        graphics.DrawPolygon(this.BorderPen, this.getVertexes().ToArray());
+        graphics.FillPolygon(this.FillPen.Brush, this.getVertexes().ToArray());
     }
 
     public override List<Point> Location()
@@ -25,12 +25,10 @@ public class Parallelogram : Poligon
         return this.getVertexes();
     }
 
-    /// 
-    /// <param name="destination"></param>
-    public override void move(Point destination) { }
-
     public override bool tapOnCreate(Point vertex)
     {
-        return base.tapOnCreate(vertex) || this.getVertexes().Count==3;
+        if (this.getVertexes().Count == 0)
+            this.Center = vertex;
+        return base.tapOnCreate(vertex) || this.getVertexes().Count == 3;
     }
 }//end Parallelogram

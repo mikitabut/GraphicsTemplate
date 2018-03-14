@@ -23,6 +23,19 @@ public class Poligon : DoubleDimensional
         
     }
 
+    public override void move(Point destination)
+    {
+        int deltaX = this.Center.X - destination.X;
+        int deltaY = this.Center.Y - destination.Y;
+        base.move(destination);
+        List<Point> newVertexes = new List<Point>();
+        foreach (Point vertex in this.vertexes)
+        {
+            newVertexes.Add(new Point(vertex.X + deltaX, vertex.Y + deltaY));
+        }
+        this.setVertexes(newVertexes);
+    }
+
     public override void draw(Graphics formGraphics)
     {
         if (this.vertexes.Count >= 3)
